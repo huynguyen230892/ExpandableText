@@ -78,11 +78,13 @@ public struct ExpandableText: View {
                     .readSize { moreTextSize = $0 }
             )
             .contentShape(Rectangle())
+        #if !os(tvOS)
             .onTapGesture {
                 if shouldShowMoreButton {
                     withAnimation(expandAnimation) { isExpanded.toggle() }
                 }
             }
+        #endif
             .modifier(OverlayAdapter(alignment: .trailingLastTextBaseline, view: {
                 if shouldShowMoreButton {
                     Button {

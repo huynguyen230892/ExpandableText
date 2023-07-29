@@ -17,7 +17,7 @@ internal struct OverlayAdapter<V: View>: ViewModifier {
     }
     
     func body(content: Content) -> some View {
-        if #available(iOS 15.0, *) {
+        if #available(iOS 15.0, tvOS 15, *) {
             content.overlay(alignment: alignment, content: view)
         } else {
             content.overlay(view(), alignment: alignment)
